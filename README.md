@@ -1,30 +1,25 @@
 # nifraworld.com — landing site
 
-Static site. No build step.
+Static site, no build step. Deployed from GitHub via Cloudflare Pages (same flow as the apps).
 
 ```
-index.html      landing page (SEO meta, Open Graph, JSON-LD included)
-privacy.html    DRAFT privacy policy — review before publishing
-robots.txt
-sitemap.xml
-assets/         app icons, favicon; add og-nifraworld.png (1200×630), logo-512.png, apple-touch-icon.png (180×180)
+index.html      landing page (SEO meta, Open Graph, JSON-LD for all three apps)
+privacy.html    DRAFT privacy policy — owner must review, then remove the yellow box
+robots.txt / sitemap.xml
+assets/         og-*.png share images (1200x630), logo-512.png, apple-touch-icon.png, favicon.svg, app icons
 ```
 
-## Deploy (Cloudflare Pages, same place the apps live)
+## Status (12 Sep 2026)
+- [x] Site built and committed locally (git, branch main)
+- [x] Spelling Buddy repo: SEO head + og image pushed → live
+- [x] Boithok Ghor repo: SEO head + og image + manifest pushed (verify live)
+- [x] Khela Ghor: SEO head added to KHELA-GHOR-v2.5.4-DEPLOY (owner re-uploads folder)
+- [ ] GitHub repo `nifraworld/nifraworld-site` created and pushed
+- [ ] Cloudflare Pages project connected; custom domains nifraworld.com + www
+- [ ] khelaghor.nifraworld.com custom domain on the khela-ghor project
+- [ ] Facebook page: rename, @nifraworld, website, CTA, cover
+- [ ] Search Console + Bing + Cloudflare Web Analytics
+- [ ] Privacy draft reviewed; facebook.com/nifraworld confirmed or replaced
 
-1. Cloudflare dashboard → Workers & Pages → Create → Pages → **Upload assets** (or connect a Git repo) → upload this `site/` folder.
-2. Project → Custom domains → add `nifraworld.com` **and** `www.nifraworld.com`. Cloudflare creates the DNS records.
-3. Rules → Redirect Rules → redirect `www.nifraworld.com/*` → `https://nifraworld.com/$1` (301).
-4. Verify: `https://nifraworld.com` loads, `https://nifraworld.com/robots.txt` and `/sitemap.xml` load.
-
-## Before going live — three placeholders to fill
-
-- `https://www.facebook.com/nifraworld` — claim this username on the Facebook page (Page settings → Username), or replace every occurrence with the page's real URL.
-- `assets/og-nifraworld.png` — 1200×630 share image. Without it Facebook shows a blank card.
-- `privacy.html` — remove the yellow draft box once reviewed.
-
-## After going live
-
-- Google Search Console → add property `nifraworld.com` (Domain type, DNS TXT record in Cloudflare) → submit `sitemap.xml`.
-- Bing Webmaster Tools → import from Search Console.
-- Facebook Sharing Debugger (developers.facebook.com/tools/debug) → paste `https://nifraworld.com/` → Scrape again.
+## Cloudflare Pages settings for this repo
+Framework preset: None · Build command: (empty) · Build output directory: `/`
